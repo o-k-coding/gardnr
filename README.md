@@ -66,10 +66,13 @@ and
 ### Wishlist
 
 - [] setup command to help get local environment setup for managing notes and digital garden
+- [] parse md files into a tree like data structure for easier querying
 - [] use llm to generate description for posts
 - [] allow user to define tags for posts
 - [] use llm with RAG to generate tags for posts
 - [] create a convention for saving files to cloud and templating Image components in the posts
+  - [x] using obsidian image syntax
+  - [] using normal markdown image syntax
 - [] create an rpc server to allow for remote control of grdnr
 - [] create VS Code plugin to work with grdnr-control
 - [] use charm for more interactive cli
@@ -78,8 +81,11 @@ and
 
 Create a post in the configured garden repo content folder GRDNR_GARDEN_REPO_PATH/GRDNR_GARDEN_REPO_CONTENT_PATH
 
+examples:
+
 ```bash
 grdnr create garden-post --description="Garden update 05-30-2024" --post-path garden --note life/garden/update-05-30-2024.md
+grdnr create garden-post --description="Kesh Character Description" --post-path vennelos/characters/NPCs --note life/games/dnd/vennelos/NPCs/Edge of Night/Kesh.md
 ```
 
 ### Notes

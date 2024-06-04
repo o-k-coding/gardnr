@@ -1,3 +1,4 @@
 version.txt
 translate-key.json
 .bin
+.env*

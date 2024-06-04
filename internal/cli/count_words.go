@@ -17,7 +17,7 @@ func newCountWordsCmd() *cobra.Command {
 		Short: "Count words in file",
 		Long:  "Counts words separated by whitespace in file",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			count, err := count.CountWords(grdnr.Grdnr.RootPath, filePath)
+			count, err := count.CountWords(grdnr.Grdnr.Config.RootPath, filePath)
 			if err != nil {
 				return err
 			}

@@ -21,10 +21,10 @@ func newCreateGardenPostCmd() *cobra.Command {
 		Short: "Create new garden post",
 		Long:  "",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			notePath := filepath.Join(grdnr.Grdnr.RootPath, notePath)
-			templatePath := filepath.Join(grdnr.Grdnr.RootPath, grdnr.Grdnr.TemplatePath, postTemplate)
-			postPath := filepath.Join(grdnr.Grdnr.GardenRepoPath, grdnr.Grdnr.GardenRepoContentPath, postPath)
-			dailyNote := create.CreateGardenPost(notePath, templatePath, postPath, postName, title, description)
+			notePath := filepath.Join(grdnr.Grdnr.Config.RootPath, notePath)
+			templatePath := filepath.Join(grdnr.Grdnr.Config.RootPath, grdnr.Grdnr.Config.TemplatePath, postTemplate)
+			postPath := filepath.Join(grdnr.Grdnr.Config.GardenRepoPath, grdnr.Grdnr.Config.GardenRepoContentPath, postPath)
+			dailyNote := create.CreateGardenPost(notePath, templatePath, postPath, postName, title, description, grdnr.Grdnr.Storage)
 			if err := dailyNote.CreateFromTemplate(); err != nil {
 				return err
 			}

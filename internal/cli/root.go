@@ -26,7 +26,10 @@ func Execute(ctx context.Context) {
 
 // Define flags, configuration and commands here.
 func init() {
-	grdnr.InitConfig()
+	if err := grdnr.Grdnr.Init(context.Background()); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
 
 	// Add Commands
 	rootCmd.AddCommand(
@@ -37,10 +40,10 @@ func init() {
 	)
 
 	// Set a custom validator for this one
-	rootCmd.PersistentFlags().StringVarP(&grdnr.Grdnr.RootPath, "root", "r", grdnr.Grdnr.RootPath, "Root path for grdnr to manage, also can use env variable GRDNR_ROOT_PATH")
-	rootCmd.PersistentFlags().StringVarP(&grdnr.Grdnr.TemplatePath, "templates", "t", grdnr.Grdnr.TemplatePath, "Root path for grdnr template files, also can use env variable GRDNR_TEMPLATE_PATH")
+	rootCmd.PersistentFlags().StringVarP(&grdnr.Grdnr.Config.RootPath, "root", "r", grdnr.Grdnr.Config.RootPath, "Root path for grdnr to manage, also can use env variable GRDNR_ROOT_PATH")
+	rootCmd.PersistentFlags().StringVarP(&grdnr.Grdnr.Config.TemplatePath, "templates", "t", grdnr.Grdnr.Config.TemplatePath, "Root path for grdnr template files, also can use env variable GRDNR_TEMPLATE_PATH")
 
-	if grdnr.Grdnr.RootPath == "" {
+	if grdnr.Grdnr.Config.RootPath == "" {
 		rootCmd.MarkPersistentFlagRequired("root")
 	}
 }

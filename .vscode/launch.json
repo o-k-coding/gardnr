@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+     {
+      "name": "Grdnr",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "envFile": "${workspaceFolder}/.env.local",
+      "program": "${workspaceFolder}/cmd/grdnr/main.go",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

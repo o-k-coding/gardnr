@@ -13,7 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 
-	grdnrconfig "okcoding.com/grdnr/internal/config"
+	gardnrconfig "okcoding.com/gardnr/internal/config"
 )
 
 type ObjectStorage interface {
@@ -24,7 +24,7 @@ type ObjectStorage interface {
 
 // TODO create an aws client - and use if config specifies aws or cloudflare for files
 // but use the cloudflare client for creating the bucket? idk I guess each post dir should have a bucket?
-func NewObjectStorage(ctx context.Context, config grdnrconfig.GrdnrConfig) (ObjectStorage, error) {
+func NewObjectStorage(ctx context.Context, config gardnrconfig.GardnrConfig) (ObjectStorage, error) {
 	// TODO add config for which type of object storage to use
 	// client, err := cloudflare.NewCloudflareClient(config.CloudflareConfig)
 	// if err != nil {
@@ -43,18 +43,18 @@ type S3ObjectStorage struct {
 	getTimeout time.Duration
 }
 
-func newAWSS3Client(ctx context.Context, grdnrConfig grdnrconfig.GrdnrConfig) (*S3ObjectStorage, error) {
+func newAWSS3Client(ctx context.Context, gardnrConfig gardnrconfig.GardnrConfig) (*S3ObjectStorage, error) {
 	// Create custom resolver for R2 endpoint
 	r2Resolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
 		return aws.Endpoint{
-			URL: fmt.Sprintf("https://%s.r2.cloudflarestorage.com", grdnrConfig.CloudlareAccountID),
+			URL: fmt.Sprintf("https://%s.r2.cloudflarestorage.com", gardnrConfig.CloudlareAccountID),
 		}, nil
 	})
 	// Load AWS config with custom resolver
 	awsConfig, err := config.LoadDefaultConfig(ctx,
 		config.WithEndpointResolverWithOptions(r2Resolver),
-		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(grdnrConfig.CloudflareAPIKey, grdnrConfig.CloudflareSecretKey, "")),
-		config.WithRegion(grdnrConfig.CloudflareRegion),
+		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(gardnrConfig.CloudflareAPIKey, gardnrConfig.CloudflareSecretKey, "")),
+		config.WithRegion(gardnrConfig.CloudflareRegion),
 	)
 	if err != nil {
 		return nil, err
@@ -64,9 +64,9 @@ func newAWSS3Client(ctx context.Context, grdnrConfig grdnrconfig.GrdnrConfig) (*
 	s3Client := s3.NewFromConfig(awsConfig)
 	return &S3ObjectStorage{
 		Client:     s3Client,
-		bucket:     grdnrConfig.CloudflareStorageBucket,
-		putTimeout: grdnrConfig.PutObjectTimeout,
-		getTimeout: grdnrConfig.GetObjectTimeout,
+		bucket:     gardnrConfig.CloudflareStorageBucket,
+		putTimeout: gardnrConfig.PutObjectTimeout,
+		getTimeout: gardnrConfig.GetObjectTimeout,
 	}, nil
 }
 

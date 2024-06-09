@@ -1,8 +1,10 @@
-# grdnr
+# gardnr
 
-CLI used for my custom productivity workflow.
+CLI used for my custom productivity workflow, including tending my digital gardens in the form of private notes as well as a "blog" style website.
 
 This is evolving, and is very opinionated currently to fit my use cases!
+
+Named in honor of how we pronounce Gardener in the midwest 🧑‍🌾
 
 ## Building
 
@@ -10,17 +12,17 @@ In this directory run
 
 ```bash
 ./internal/version/get_version.sh
-go build -o .bin/grdnr ./cmd/grdnr
+go build -o .bin/gardnr ./cmd/gardnr
 ```
 
-this will create a binary `grdnr`
+this will create a binary `gardnr`
 
 ## Installing
 
 to install the binary in your local go bin
 
 ```bash
-go install ./cmd/grdnr
+go install ./cmd/gardnr
 ```
 
 this will build the binary and then provide it in your go bin
@@ -73,19 +75,19 @@ and
 - [] create a convention for saving files to cloud and templating Image components in the posts
   - [x] using obsidian image syntax
   - [] using normal markdown image syntax
-- [] create an rpc server to allow for remote control of grdnr
-- [] create VS Code plugin to work with grdnr-control
+- [] create an rpc server to allow for remote control of gardnr
+- [] create VS Code plugin to work with gardnr-control
 - [] use charm for more interactive cli
 
 ### Digital Garden
 
-Create a post in the configured garden repo content folder GRDNR_GARDEN_REPO_PATH/GRDNR_GARDEN_REPO_CONTENT_PATH
+Create a post in the configured garden repo content folder GARDNR_GARDEN_REPO_PATH/GARDNR_GARDEN_REPO_CONTENT_PATH
 
 examples:
 
 ```bash
-grdnr create garden-post --description="Garden update 05-30-2024" --post-path garden --note life/garden/update-05-30-2024.md
-grdnr create garden-post --description="Kesh Character Description" --post-path vennelos/characters/NPCs --note life/games/dnd/vennelos/NPCs/Edge of Night/Kesh.md
+gardnr create garden-post --description="Garden update 05-30-2024" --post-path garden --note life/garden/update-05-30-2024.md
+gardnr create garden-post --description="Kesh Character Description" --post-path vennelos/characters/NPCs --note life/games/dnd/vennelos/NPCs/Edge of Night/Kesh.md
 ```
 
 ### Notes
@@ -93,7 +95,7 @@ grdnr create garden-post --description="Kesh Character Description" --post-path 
 Create a daily note from a template
 
 ```bash
-grdnr create daily-note
+gardnr create daily-note
 ```
 
 ### Translate
@@ -108,17 +110,17 @@ Create service account for authentication
 
 ```bash
 gcloud iam service-accounts create \
-    grdnr-translate --project \
-    grdnr
+    gardnr-translate --project \
+    gardnr
 ```
 
 Grant the service account the translate user role
 
 ```bash
 gcloud projects \
-    add-iam-policy-binding grdnr \
+    add-iam-policy-binding gardnr \
     --member \
-    serviceAccount:grdnr-translate@grdnr.iam.gserviceaccount.com \
+    serviceAccount:gardnr-translate@gardnr.iam.gserviceaccount.com \
     --role roles/cloudtranslate.user
 ```
 
@@ -128,7 +130,7 @@ Generate a key
 gcloud iam service-accounts keys \
     create translate-key.json \
     --iam-account \
-    grdnr-translate@grdnr.iam.gserviceaccount.com
+    gardnr-translate@gardnr.iam.gserviceaccount.com
 ```
 
 save the key json file locally - it is ignored in this repo
@@ -136,7 +138,7 @@ save the key json file locally - it is ignored in this repo
 set the key file as your google app creds env var
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS="$NOTES/development/grdnr/translate-key.json"
+export GOOGLE_APPLICATION_CREDENTIALS="$NOTES/development/gardnr/translate-key.json"
 ```
 
 Now Locally
@@ -151,5 +153,5 @@ go get -u \
 Generate word count for a file
 
 ```bash
-grdnr count words -f /some/file
+gardnr count words -f /some/file
 ```

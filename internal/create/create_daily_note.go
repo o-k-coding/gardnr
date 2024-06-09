@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"okcoding.com/grdnr/internal/template"
+	"okcoding.com/gardnr/internal/template"
 )
 
 type DailyNoteTemplateData struct {

@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"okcoding.com/grdnr/internal/count"
+	"okcoding.com/gardnr/internal/count"
 )
 
 func TestCountWords(t *testing.T) {

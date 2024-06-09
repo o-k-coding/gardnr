@@ -2,7 +2,7 @@ package cloudflare
 
 import (
 	"github.com/cloudflare/cloudflare-go"
-	"okcoding.com/grdnr/internal/config"
+	"okcoding.com/gardnr/internal/config"
 )
 
 type CloudFlareClient struct {

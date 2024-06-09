@@ -12,7 +12,7 @@ func newCreateCmd() *cobra.Command {
 	createCmd := &cobra.Command{
 		Use:   "create",
 		Short: "Command for creating files",
-		Long:  "Support for creating files that fit into the workflow and framework of note taking provided by grdnr",
+		Long:  "Support for creating files that fit into the workflow and framework of note taking provided by gardnr",
 	}
 
 	createCmd.AddCommand(

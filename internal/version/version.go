@@ -9,7 +9,7 @@ import (
 var version string
 
 // Function is an action, depends on when it is called.
-func GetGrdnrVersion() string {
+func GetGardnrVersion() string {
 	if version == "" {
 		return "No version found, anarchy time!"
 	}

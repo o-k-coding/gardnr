@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"okcoding.com/grdnr/internal/translate"
+	"okcoding.com/gardnr/internal/translate"
 )
 
 // TODO prompt support would be awesome with a searchable table of langs

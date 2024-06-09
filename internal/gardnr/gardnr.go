@@ -1,19 +1,19 @@
-package grdnr
+package gardnr
 
 import (
 	"context"
 
-	"okcoding.com/grdnr/internal/config"
-	"okcoding.com/grdnr/internal/objectstorage"
+	"okcoding.com/gardnr/internal/config"
+	"okcoding.com/gardnr/internal/objectstorage"
 )
 
 type Service struct {
-	Config  config.GrdnrConfig
+	Config  config.GardnrConfig
 	Storage objectstorage.ObjectStorage
 }
 
 var (
-	Grdnr Service
+	Gardnr Service
 )
 
 func (s *Service) Init(ctx context.Context) (err error) {

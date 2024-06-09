@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"okcoding.com/grdnr/internal/objectstorage"
-	"okcoding.com/grdnr/internal/template"
+	"okcoding.com/gardnr/internal/objectstorage"
+	"okcoding.com/gardnr/internal/template"
 )
 
 type GardenPostTemplateData struct {

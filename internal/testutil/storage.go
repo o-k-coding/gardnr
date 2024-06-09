@@ -6,22 +6,22 @@ import (
 	"testing"
 	"time"
 
-	grdnrconfig "okcoding.com/grdnr/internal/config"
-	"okcoding.com/grdnr/internal/objectstorage"
+	gardnrconfig "okcoding.com/gardnr/internal/config"
+	"okcoding.com/gardnr/internal/objectstorage"
 )
 
 func NewTestStorage(t *testing.T) objectstorage.ObjectStorage {
 	t.Helper()
-	config := grdnrconfig.GrdnrConfig{
-		StorageConfig: grdnrconfig.StorageConfig{
-			StorageProvider:  grdnrconfig.StorageProviderCloudflare,
+	config := gardnrconfig.GardnrConfig{
+		StorageConfig: gardnrconfig.StorageConfig{
+			StorageProvider:  gardnrconfig.StorageProviderCloudflare,
 			PutObjectTimeout: time.Second * 10,
 			GetObjectTimeout: time.Second * 10,
 		},
-		CloudflareConfig: grdnrconfig.CloudflareConfig{
-			CloudflareAPIKey:        os.Getenv("GRDNR_CLOUDFLARE_API_KEY"),
-			CloudlareAccountID:      os.Getenv("GRDNR_CLOUDFLARE_ACCOUNT_ID"),
-			CloudflareSecretKey:     os.Getenv("GRDNR_CLOUDFLARE_SECRET_KEY"),
+		CloudflareConfig: gardnrconfig.CloudflareConfig{
+			CloudflareAPIKey:        os.Getenv("GARDNR_CLOUDFLARE_API_KEY"),
+			CloudlareAccountID:      os.Getenv("GARDNR_CLOUDFLARE_ACCOUNT_ID"),
+			CloudflareSecretKey:     os.Getenv("GARDNR_CLOUDFLARE_SECRET_KEY"),
 			CloudflareRegion:        "auto",
 			CloudflareStorageBucket: "ok-garden",
 		},

@@ -4,12 +4,12 @@ import (
 	"testing"
 	"time"
 
-	create "okcoding.com/grdnr/internal/create"
+	create "okcoding.com/gardnr/internal/create"
 )
 
 func TestCreateDailyNote(t *testing.T) {
 	rootPath := "/test/path"
-	templatePath := "/test/path/.grdnr/templates/daily-note.tmpl"
+	templatePath := "/test/path/.gardnr/templates/daily-note.tmpl"
 	currentTime, err := time.Parse("2006-01-02 15:04", "2022-04-24 09:00")
 
 	if err != nil {

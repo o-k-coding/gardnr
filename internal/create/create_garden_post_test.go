@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"okcoding.com/grdnr/internal/testutil"
+	"okcoding.com/gardnr/internal/testutil"
 )
 
 func Test_handleImage(t *testing.T) {

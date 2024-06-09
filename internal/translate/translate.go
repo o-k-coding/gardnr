@@ -20,7 +20,7 @@ func TranslateText(sourceLang string, targetLang string, text string) (string, e
 	defer client.Close()
 
 	req := &translatepb.TranslateTextRequest{
-		Parent:             fmt.Sprintf("projects/%s/locations/global", "grdnr"),
+		Parent:             fmt.Sprintf("projects/%s/locations/global", "gardnr"),
 		SourceLanguageCode: sourceLang,
 		TargetLanguageCode: targetLang,
 		MimeType:           "text/plain", // Mime types: "text/plain", "text/html"

@@ -6,13 +6,13 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	grdnr "okcoding.com/grdnr/internal/grdnr"
+	gardnr "okcoding.com/gardnr/internal/gardnr"
 )
 
 var (
 	rootCmd = &cobra.Command{
-		Use:   "grdnr",
-		Short: "grdnr will tend your grdn",
+		Use:   "gardnr",
+		Short: "gardnr will tend your grdn",
 		Long:  "Use for curating your digital garden",
 	}
 )
@@ -26,7 +26,7 @@ func Execute(ctx context.Context) {
 
 // Define flags, configuration and commands here.
 func init() {
-	if err := grdnr.Grdnr.Init(context.Background()); err != nil {
+	if err := gardnr.Gardnr.Init(context.Background()); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
@@ -40,10 +40,10 @@ func init() {
 	)
 
 	// Set a custom validator for this one
-	rootCmd.PersistentFlags().StringVarP(&grdnr.Grdnr.Config.RootPath, "root", "r", grdnr.Grdnr.Config.RootPath, "Root path for grdnr to manage, also can use env variable GRDNR_ROOT_PATH")
-	rootCmd.PersistentFlags().StringVarP(&grdnr.Grdnr.Config.TemplatePath, "templates", "t", grdnr.Grdnr.Config.TemplatePath, "Root path for grdnr template files, also can use env variable GRDNR_TEMPLATE_PATH")
+	rootCmd.PersistentFlags().StringVarP(&gardnr.Gardnr.Config.RootPath, "root", "r", gardnr.Gardnr.Config.RootPath, "Root path for gardnr to manage, also can use env variable GARDNR_ROOT_PATH")
+	rootCmd.PersistentFlags().StringVarP(&gardnr.Gardnr.Config.TemplatePath, "templates", "t", gardnr.Gardnr.Config.TemplatePath, "Root path for gardnr template files, also can use env variable GARDNR_TEMPLATE_PATH")
 
-	if grdnr.Grdnr.Config.RootPath == "" {
+	if gardnr.Gardnr.Config.RootPath == "" {
 		rootCmd.MarkPersistentFlagRequired("root")
 	}
 }

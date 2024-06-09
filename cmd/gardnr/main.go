@@ -3,8 +3,8 @@ package main
 import (
 	"syscall"
 
-	"okcoding.com/grdnr/internal/cli"
-	"okcoding.com/grdnr/internal/cmdutil"
+	"okcoding.com/gardnr/internal/cli"
+	"okcoding.com/gardnr/internal/cmdutil"
 )
 
 func main() {

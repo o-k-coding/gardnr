@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/spf13/cobra"
-	"okcoding.com/grdnr/internal/count"
-	grdnr "okcoding.com/grdnr/internal/grdnr"
+	"okcoding.com/gardnr/internal/count"
+	gardnr "okcoding.com/gardnr/internal/gardnr"
 )
 
 func newCountWordsCmd() *cobra.Command {
@@ -17,7 +17,7 @@ func newCountWordsCmd() *cobra.Command {
 		Short: "Count words in file",
 		Long:  "Counts words separated by whitespace in file",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			count, err := count.CountWords(grdnr.Grdnr.Config.RootPath, filePath)
+			count, err := count.CountWords(gardnr.Gardnr.Config.RootPath, filePath)
 			if err != nil {
 				return err
 			}

@@ -3,7 +3,7 @@ package translate_test
 import (
 	"testing"
 
-	"okcoding.com/grdnr/internal/translate"
+	"okcoding.com/gardnr/internal/translate"
 )
 
 func TestTranslateText(t *testing.T) {

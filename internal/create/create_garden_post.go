@@ -63,7 +63,7 @@ func (g *GardenPost) CreateFromTemplate() error {
 		noteFileExtension := filepath.Ext(noteFileName)
 		g.GardenPostTemplateData.Title = strings.Trim(noteFileName[0:len(noteFileName)-len(noteFileExtension)], " ")
 	}
-	// TODO this all seems very hacky and not very flexible
+	// TODO this all seems very hacky and not very flexible, should use the # Header if it has one - but need to parse the file first
 	if g.PostName == "" {
 		templateParts := strings.Split(g.TemplatePath, ".")
 		fileExt := templateParts[len(templateParts)-2]
@@ -91,8 +91,7 @@ func (g *GardenPost) CreateFromTemplate() error {
 		text := fileScanner.Text()
 
 		if strings.Contains(text, "![") {
-			// TODO upload image file to storage
-			// TODO replace with image tag
+			// TODO handle markdown syntax for images as well
 			text, err = handleImage(context.Background(), filepath.Dir(g.NotePath), text, g.Storage)
 			if err != nil {
 				log.Printf("Error handling image in %s : %e", g.NotePath, err)

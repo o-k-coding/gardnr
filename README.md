@@ -62,6 +62,7 @@ and
 
 - [] If you don't specify a post-name for create garden-post and the template file does not follow the format x.ext.tmpl then it will not work.
 - [] Translate tests are failing
+- [] Headings are being removed from md files from obsidian at least
 
 ## Features
 
@@ -78,6 +79,7 @@ and
 - [] create an rpc server to allow for remote control of gardnr
 - [] create VS Code plugin to work with gardnr-control
 - [] use charm for more interactive cli
+- [] Image compression
 
 ### Digital Garden
 
